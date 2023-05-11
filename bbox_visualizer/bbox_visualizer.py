@@ -86,18 +86,18 @@ def add_label(img,
     (label_width, label_height), baseline = cv2.getTextSize(label, font, size, thickness)
 
     if top:
-        label_bg = [bbox[0], bbox[1], bbox[0] + label_width, bbox[1] - label_height - (15 * size)]
+        label_bg = [bbox[0], bbox[1], bbox[0] + label_width, bbox[1] - label_height - int(15 * size)]
         if draw_bg:
             cv2.rectangle(img, (label_bg[0], label_bg[1]),
                           (label_bg[2] + 5, label_bg[3]), text_bg_color, -1)
 
-        cv2.putText(img, label, (bbox[0] + 5, bbox[1] - (15 * size)), font, size, text_color, thickness)
+        cv2.putText(img, label, (bbox[0] + 5, bbox[1] - int(15 * size)), font, size, text_color, thickness)
     else:
-        label_bg = [bbox[0], bbox[1], bbox[0] + label_width, bbox[1] + label_height + (15 * size)]
+        label_bg = [bbox[0], bbox[1], bbox[0] + label_width, bbox[1] + label_height + int(15 * size)]
         if draw_bg:
             cv2.rectangle(img, (label_bg[0], label_bg[1]),
                           (label_bg[2] + 5, label_bg[3]), text_bg_color, -1)
-        cv2.putText(img, label, (bbox[0] + 5, bbox[1] + (16 * size) + (4 * thickness)), font, size, text_color, thickness)
+        cv2.putText(img, label, (bbox[0] + 5, bbox[1] + int(16 * size) + (4 * thickness)), font, size, text_color, thickness)
     return img
 
 
